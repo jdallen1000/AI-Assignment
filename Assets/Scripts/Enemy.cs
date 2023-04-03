@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour
                     transform.Translate(currentDir * speed * Time.deltaTime);
                 }
                 //Implement path finding algorithm here + invoke the method: call it here
+                DFS();
             }
             else
             {
@@ -133,7 +136,7 @@ public class Enemy : MonoBehaviour
         {
             currentNodeSearch = unsearchedNodes[unsearchedNodes.Count - 1];                                     //1. TAKE LAST ITEM IN 'UNSEARCHED NODES' LIST AND ASSIGN IT TO 'NODE CURRENTLY BEING SEARCHED'
 
-            if (currentNodeSearch == playerScript.TargetNode || currentNodeSearch == playerScript.CurrentNode)  //CHANGE SCRIPT WHEN YOU DECIDE WHAT THE TARGET IS GOING TO BE
+            if (currentNodeSearch = playerScript.CurrentNode)                                                   //CHANGE SCRIPT WHEN YOU DECIDE WHAT THE TARGET IS GOING TO BE
                                                                                                                 //2. CHECK IF 'NODE CURRENTLY BEING SEARCHED' IS THE SAME AS *EITHER*
                                                                                                                      //THE TARGET NODE OF THE PLAYER (NODE THEY ARE HEADING TOWARDS)
                                                                                                                      //THE CURRENT NODE OF THE PLAYER (THE LAST NODE THEY VISITED)

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -45,4 +45,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    
 }
