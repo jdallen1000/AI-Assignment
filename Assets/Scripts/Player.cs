@@ -37,19 +37,11 @@ public class Player : MonoBehaviour
 
         if (moving == false)
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
-                foreach (Node node in GameManager.Instance.Nodes)
-            {
-                if (node.Parents.Length > 2 && node.Children.Length == 3)
-                {
-                    CurrentNode = node;
-                    break;
-                }
                 //detect if movement
                 //check if any events receieved from the buttons if so, which node is the current node, set moving to true. if moving is true well go to else, say that our distance.
                 //if distance is greater than 0.25f. When the game starts the player will be sitting, moving will set to false until a button is pressed.
                 //Implement inputs and event-callbacks here
-            }
+            
         }
         else
         {

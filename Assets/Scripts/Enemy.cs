@@ -36,7 +36,10 @@ public class Enemy : MonoBehaviour
                     transform.Translate(currentDir * speed * Time.deltaTime);
                 }
                 //Implement path finding algorithm here + invoke the method: call it here
-                DFS();
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    DFS();
+                }
             }
             else
             {
@@ -44,6 +47,7 @@ public class Enemy : MonoBehaviour
             }
 
             Debug.DrawRay(transform.position, currentDir, Color.cyan);
+            Debug.Log(currentNode.transform.position);
         }
     }
 
@@ -79,52 +83,16 @@ public class Enemy : MonoBehaviour
     }
 
     //Implement DFS algorithm method here
-
-
-    //VARIABLE FOR 'NODE CURRENTLY BEING SEARCHED'
-    //BOOLEAN FOR 'TARGET FOUND'
-    //LIST OF TYPE 'NODE' STORING 'UNSEARCHED NODES (THIS IS YOUR STACK)
-
-
-    //SET 'TARGET FOUND' FALSE
-
-    //ASSIGN GAMEMANAGER. INSTANCE. NODES [0] TO YOUR 'UNSEARCHED NODES' LIST
-
-    //IF IT ISN'T TRUE CONTINUE
-
-    //LOOP STARTS HERE
-
-    //WHILE TARGET FOUND IS FALSE, CONTINUE THE LOOP
-    //1. TAKE LAST ITEM IN 'UNSEARCHED NODES' LIST AND ASSIGN IT TO 'NODE CURRENTLY BEING SEARCHED'
-
-    //2. CHECK IF 'NODE CURRENTLY BEING SEARCHED' IS THE SAME AS *EITHER*
-    //THE TARGET NODE OF THE PLAYER (NODE THEY ARE HEADING TOWARDS)
-    //THE CURRENT NODE OF THE PLAYER (THE LAST NODE THEY VISITED)
-    //IF THIS IS TRUE ('NODE CURRENTLY BEING SEARCHED' IS THE ONE WE WANT):
-    //ASSIGN 'NODE CURRENTLY BEING SEARCHED' AS 'CURRENTNODE'
-    //BREAK THE LOOP AND FINISH THIS METHOD
-    //IF IT ISN'T TRUE CONTINUE
-
-    //3. USE A FOR LOOP TO ADD EACH CHILD OF 'NODE CURRENTLY BEING SEARCHED' TO UNSEARCHED NODES LIST
-
-    //4. REMOVE 'NODE CURRENTLY BEING SEARCHED FROM UNSEARCHED NODES LIST
-
-    //5. RETURN TO START OF LOOP
-
-
-
-
     private Node currentNodeSearch;
     private bool targetFound = false;
-    private List<Node> unsearchedNodes;
+    private List<Node> unsearchedNodes = new List<Node>();
 
-    public object Player;
     Player playerScript;
 
 
     private void Awake()
     {
-        playerScript = gameObject.GetComponent<Player>();    
+        playerScript = GameObject.Find("Player").GetComponent<Player>();    
     }
 
     void DFS()
@@ -142,6 +110,7 @@ public class Enemy : MonoBehaviour
                                                                                                                      //THE CURRENT NODE OF THE PLAYER (THE LAST NODE THEY VISITED)
             {
                 currentNode = currentNodeSearch;                                                                //ASSIGN 'NODE CURRENTLY BEING SEARCHED' AS 'CURRENTNODE'
+                Debug.Log(currentNode.transform.position);
                 targetFound = true; 
                 unsearchedNodes.Clear();                                                                        // ADDED A STEP TO CLEAR THE LIST UNSURE IF NESSESSARY
                 break;                                                                                          //BREAK THE LOOP AND FINISH THIS METHOD
