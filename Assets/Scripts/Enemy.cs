@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
             }
 
             Debug.DrawRay(transform.position, currentDir, Color.cyan);
-            Debug.Log(currentNode.transform.position);
+           // Debug.Log(currentNode.transform.position);
         }
     }
 
@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
                                                                                                                      //THE CURRENT NODE OF THE PLAYER (THE LAST NODE THEY VISITED)
             {
                 currentNode = currentNodeSearch;                                                                //ASSIGN 'NODE CURRENTLY BEING SEARCHED' AS 'CURRENTNODE'
-                Debug.Log(currentNode.transform.position);
+                //Debug.Log(currentNode.transform.position);
                 targetFound = true; 
                 unsearchedNodes.Clear();                                                                        // ADDED A STEP TO CLEAR THE LIST UNSURE IF NESSESSARY
                 break;                                                                                          //BREAK THE LOOP AND FINISH THIS METHOD

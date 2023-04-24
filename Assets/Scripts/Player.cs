@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public Node CurrentNode { get; private set; }
     public Node TargetNode { get; private set; }
 
+    public GameObject asdfasdfa;
+
+
     [SerializeField] private float speed = 4;
    
     private bool moving = false;
@@ -34,14 +37,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(moving);
 
         if (moving == false)
         {
-                //detect if movement
-                //check if any events receieved from the buttons if so, which node is the current node, set moving to true. if moving is true well go to else, say that our distance.
-                //if distance is greater than 0.25f. When the game starts the player will be sitting, moving will set to false until a button is pressed.
-                //Implement inputs and event-callbacks here
-            
+            //detect if movement
+            //check if any events receieved from the buttons if so, which node is the current node, set moving to true. if moving is true well go to else, say that our distance.
+            //if distance is greater than 0.25f. When the game starts the player will be sitting, moving will set to false until a button is pressed.
+            //Implement inputs and event-callbacks here
+            if (Input.GetButtonDown("Fire1"))
+            {
+                asdfasdfa = TargetNode;
+                Debug.Log(CurrentNode.Parents[0].transform.position);
+                MoveToNode(TargetNode);
+            }
         }
         else
         {
@@ -74,12 +83,5 @@ public class Player : MonoBehaviour
             currentDir = currentDir.normalized;
             moving = true;
         }
-    }
-
-    public void MoveUp()
-    {
-        moving = true;
-        CurrentNode.Parents[0] = TargetNode;
-        
     }
 }
