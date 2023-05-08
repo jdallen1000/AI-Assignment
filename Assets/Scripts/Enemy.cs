@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 
     public delegate void GameEndDelegate();
     public event GameEndDelegate GameOverEvent = delegate { };
+    public GameObject gamaOvarText;
 
 
 
@@ -31,17 +32,13 @@ public class Enemy : MonoBehaviour
             if (currentNode != null)
             {
                 //If within 0.25 units of the current node.
-                if (Vector3.Distance(transform.position, currentNode.transform.position) > 0.25f)
+                if (Vector3.Distance(transform.position, currentNode.transform.position) > 0.05f)
                 {
                     currentDir = currentNode.transform.position - transform.position;
                     currentDir = currentDir.normalized;
                     transform.Translate(currentDir * speed * Time.deltaTime);
                 }
                 //Implement path finding algorithm here + invoke the method: call it here
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    DFS();
-                }
                 if (playerScript.moving)
                 {
                     DFS();
@@ -66,6 +63,7 @@ public class Enemy : MonoBehaviour
             if (other.tag == "Player")
             {
                 playerCaught = true;
+                gamaOvarText.SetActive(true);
                 GameOverEvent.Invoke(); //invoke the game over event
             }
         }

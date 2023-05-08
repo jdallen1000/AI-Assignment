@@ -80,11 +80,15 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    /*
+     * horizontal and vertical inputs are on an axis from 1 to -1 
+     * if else statement looks for player input and calls the method with the corisponding directional vector3
+     */
     public void PlayerMoveInput()
     {
         if (Input.GetAxis("Horizontal") < 0)
         {
-            Debug.Log("input detected");
             CheckForNode(-Vector3.right);
         }
         else if (Input.GetAxis("Horizontal") > 0)
@@ -108,6 +112,8 @@ public class Player : MonoBehaviour
         * 1 = East
         * 2 = South
         * 3 = West
+        * 
+        * for button integration
         */
 
         switch (direction)
@@ -133,11 +139,11 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         Node node;
 
-        if (Physics.Raycast(transform.position, checkDirection, out hit, 50f))
+        if (Physics.Raycast(transform.position, checkDirection, out hit, 50f))  // cast raycast in direction of the direction passed throught the method
         {
-            if (hit.collider.TryGetComponent<Node>(out node))
+            if (hit.collider.TryGetComponent<Node>(out node)) //checks if hit a collider with the node script attatched
             {
-                Debug.DrawRay(transform.position, checkDirection * 1000, Color.white);
+                Debug.DrawRay(transform.position, checkDirection * 1000, Color.white); // debug ray
                 MoveToNode(node);
                 Debug.Log("HIT NODE");
             }
@@ -145,7 +151,7 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("NO HIT NODE");
-            directionNotFound = true;
+            directionNotFound = true;  //for use with button script
         }
     }
 }

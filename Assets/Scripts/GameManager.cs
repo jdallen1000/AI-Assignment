@@ -14,23 +14,21 @@ public class GameManager : MonoBehaviour
     public Node[] Nodes { get { return nodes; } }
     public Player Player { get { return player; } }
 
+    public GameObject gamaOvarText;
+
     public static GameManager Instance { get; private set; }
-
-
-    Player playerScript;
 
     /// <summary>
     /// Awake is called before Start is executed for the first time.
     /// </summary>
     private void Awake()
-    {
+    { 
         if (Instance == null)
         {
             Instance = this;
         }
         FindObjectOfType<Enemy>().GameOverEvent += GameOver;
-
-        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        gamaOvarText.SetActive(false);
     }
 
     /// <summary>

@@ -20,8 +20,6 @@ public class ButtonController : MonoBehaviour
     {
         if (playerScript.directionNotFound && !playerScript.moving)
         {
-            colour.disabledColor = Color.red;
-            button.colors = colour;
             this.GetComponent<Button>().interactable = false;
         }
         
@@ -31,8 +29,6 @@ public class ButtonController : MonoBehaviour
         if (playerScript.moving)
         {
             this.GetComponent<Button>().interactable = true;
-            colour.disabledColor = Color.green;
-            button.colors = colour;
         }
 
 
