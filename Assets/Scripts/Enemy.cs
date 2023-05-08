@@ -33,10 +33,16 @@ public class Enemy : MonoBehaviour
                 //If within 0.25 units of the current node.
                 if (Vector3.Distance(transform.position, currentNode.transform.position) > 0.25f)
                 {
+                    currentDir = currentNode.transform.position - transform.position;
+                    currentDir = currentDir.normalized;
                     transform.Translate(currentDir * speed * Time.deltaTime);
                 }
                 //Implement path finding algorithm here + invoke the method: call it here
                 if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    DFS();
+                }
+                if (playerScript.moving)
                 {
                     DFS();
                 }
@@ -81,8 +87,6 @@ public class Enemy : MonoBehaviour
         //finding two vectors for direction is dir = b - a
         //finding two vector for distance is distance = a - b
     }
-
-    //Implement DFS algorithm method here
     private Node currentNodeSearch;
     private bool targetFound = false;
     private List<Node> unsearchedNodes = new List<Node>();
@@ -104,7 +108,7 @@ public class Enemy : MonoBehaviour
         {
             currentNodeSearch = unsearchedNodes[unsearchedNodes.Count - 1];                                     //1. TAKE LAST ITEM IN 'UNSEARCHED NODES' LIST AND ASSIGN IT TO 'NODE CURRENTLY BEING SEARCHED'
 
-            if (currentNodeSearch = playerScript.CurrentNode)                                                   //CHANGE SCRIPT WHEN YOU DECIDE WHAT THE TARGET IS GOING TO BE
+            if (currentNodeSearch = playerScript.TargetNode)                                                   //CHANGE SCRIPT WHEN YOU DECIDE WHAT THE TARGET IS GOING TO BE
                                                                                                                 //2. CHECK IF 'NODE CURRENTLY BEING SEARCHED' IS THE SAME AS *EITHER*
                                                                                                                      //THE TARGET NODE OF THE PLAYER (NODE THEY ARE HEADING TOWARDS)
                                                                                                                      //THE CURRENT NODE OF THE PLAYER (THE LAST NODE THEY VISITED)

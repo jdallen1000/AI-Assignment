@@ -10,12 +10,12 @@ public class Player : MonoBehaviour
     public Node CurrentNode { get; private set; }
     public Node TargetNode { get; private set; }
 
-    public GameObject asdfasdfa;
+    public bool directionNotFound = false;
 
 
     [SerializeField] private float speed = 4;
-   
-    private bool moving = false;
+
+    public bool moving = false;
     //similar movement to ai without the pathfinding algorithm, wasd
     private Vector3 currentDir;
 
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         //for instance has three parents
         foreach (Node node in GameManager.Instance.Nodes)
         {
-            if(node.Parents.Length > 2 && node.Children.Length == 0)
+            if (node.Parents.Length > 2 && node.Children.Length == 0)
             {
                 CurrentNode = node;
                 break;
@@ -44,13 +44,8 @@ public class Player : MonoBehaviour
             //detect if movement
             //check if any events receieved from the buttons if so, which node is the current node, set moving to true. if moving is true well go to else, say that our distance.
             //if distance is greater than 0.25f. When the game starts the player will be sitting, moving will set to false until a button is pressed.
-            //Implement inputs and event-callbacks here
-            if (Input.GetButtonDown("Fire1"))
-            {
-                asdfasdfa = TargetNode;
-                Debug.Log(CurrentNode.Parents[0].transform.position);
-                MoveToNode(TargetNode);
-            }
+            //Implement inputs and event-callbacks here\
+            PlayerMoveInput();
         }
         else
         {
@@ -84,4 +79,76 @@ public class Player : MonoBehaviour
             moving = true;
         }
     }
+
+    public void PlayerMoveInput()
+    {
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            Debug.Log("input detected");
+            CheckForNode(-Vector3.right);
+        }
+        else if (Input.GetAxis("Horizontal") > 0)
+        {
+            CheckForNode(Vector3.right);
+        }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            CheckForNode(-Vector3.forward);
+        }
+        else if (Input.GetAxis("Vertical") > 0)
+        {
+            CheckForNode(Vector3.forward);
+        }
+    }
+
+    public void PlayerMouseInput(int direction)
+    {
+        /*take in int to determine direction
+        * 0 = North
+        * 1 = East
+        * 2 = South
+        * 3 = West
+        */
+
+        switch (direction)
+        {
+            case 0:
+                CheckForNode(Vector3.forward);
+                return;
+            case 1:
+                CheckForNode(Vector3.right);
+                return;
+            case 2:
+                CheckForNode(-Vector3.forward);
+                return;
+            case 3:
+                CheckForNode(-Vector3.right);
+                return;
+        }
+    }
+
+    public void CheckForNode(Vector3 checkDirection)
+    {
+
+        RaycastHit hit;
+        Node node;
+
+        if (Physics.Raycast(transform.position, checkDirection, out hit, 50f))
+        {
+            if (hit.collider.TryGetComponent<Node>(out node))
+            {
+                Debug.DrawRay(transform.position, checkDirection * 1000, Color.white);
+                MoveToNode(node);
+                Debug.Log("HIT NODE");
+            }
+        }
+        else
+        {
+            Debug.Log("NO HIT NODE");
+            directionNotFound = true;
+        }
+    }
 }
+    
+
+

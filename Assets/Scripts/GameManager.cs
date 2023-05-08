@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
+
+    Player playerScript;
+
     /// <summary>
     /// Awake is called before Start is executed for the first time.
     /// </summary>
@@ -25,6 +29,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         FindObjectOfType<Enemy>().GameOverEvent += GameOver;
+
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
     }
 
     /// <summary>
@@ -46,5 +52,4 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    
 }
