@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     public bool directionNotFound = false;
 
+    private LayerMask mask;
+
 
     [SerializeField] private float speed = 4;
 
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
                 break;
             }
         }
+        mask = LayerMask.GetMask("Ignore Raycast");
     }
 
     // Update is called once per frame
@@ -143,7 +146,7 @@ public class Player : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Node>(out node)) //checks if hit a collider with the node script attatched
             {
-                Debug.DrawRay(transform.position, checkDirection * 1000, Color.white); // debug ray
+                Debug.DrawRay(transform.position, checkDirection * 1000, Color.white, mask); // debug ray
                 MoveToNode(node);
                 Debug.Log("HIT NODE");
             }

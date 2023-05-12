@@ -9,20 +9,38 @@ public class ButtonController : MonoBehaviour
     private ColorBlock colour;
     private Button button;
 
+    private bool isRunning = false;
+
     void Start()
     {
-       playerScript = GameObject.Find("Player").GetComponent<Player>();
-       colour = GetComponent<Button>().colors;
-       button = GetComponent<Button>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        colour = GetComponent<Button>().colors;
+        button = GetComponent<Button>();
     }
 
-    public void buttonDisable()
+    IEnumerator ButtonColourChange()
     {
         if (playerScript.directionNotFound && !playerScript.moving)
         {
-            this.GetComponent<Button>().interactable = false;
+            isRunning = true;
+            colour.selectedColor = Color.red;
+            button.colors = colour;
+            yield return new WaitForSeconds(0.2f);
+            colour.selectedColor = Color.white;
+            button.colors = colour;
+            isRunning = false;
         }
-        
+        else
+        {
+            isRunning = true;
+            colour.selectedColor = Color.green;
+            button.colors = colour;
+            yield return new WaitForSeconds(0.2f);
+            colour.selectedColor = Color.white;
+            button.colors = colour;
+            isRunning = false;
+        }
+
     }
     void Update()
     {
@@ -31,6 +49,13 @@ public class ButtonController : MonoBehaviour
             this.GetComponent<Button>().interactable = true;
         }
 
+    }
 
+    public void buttonPress()
+    {
+        if (isRunning == false)
+        {
+            StartCoroutine(ButtonColourChange());
+        }
     }
 }

@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.30431107, g: 0.8490566, b: 0.20425417, a: 1}
+    m_PressedColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.6886792, g: 0.055224285, b: 0.055224285, a: 0.53333336}
     m_ColorMultiplier: 1
@@ -201,7 +201,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 19406292}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: buttonDisable
+        m_MethodName: buttonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1406,7 +1406,7 @@ GameObject:
   - component: {fileID: 1059721681}
   - component: {fileID: 1059721680}
   - component: {fileID: 1059721679}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1803,9 +1803,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.30431107, g: 0.8490566, b: 0.20425417, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+    m_PressedColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.6886792, g: 0.055224285, b: 0.055224285, a: 0.53333336}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1839,7 +1839,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202205101}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: buttonDisable
+        m_MethodName: buttonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.30431107, g: 0.8490566, b: 0.20425417, a: 1}
+    m_PressedColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.6886792, g: 0.055224285, b: 0.055224285, a: 0.53333336}
     m_ColorMultiplier: 1
@@ -2556,7 +2556,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1430648786}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: buttonDisable
+        m_MethodName: buttonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2793,7 +2793,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.30431107, g: 0.8490566, b: 0.20425417, a: 1}
+    m_PressedColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.6886792, g: 0.055224285, b: 0.055224285, a: 0.53333336}
     m_ColorMultiplier: 1
@@ -2828,7 +2828,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1547203653}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: buttonDisable
+        m_MethodName: buttonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
