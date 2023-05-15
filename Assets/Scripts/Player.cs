@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     private LayerMask mask;
 
+    public int ID_out;
+
 
     [SerializeField] private float speed = 4;
 
@@ -90,21 +92,25 @@ public class Player : MonoBehaviour
      */
     public void PlayerMoveInput()
     {
-        if (Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("Horizontal") < 0)  //left
         {
             CheckForNode(-Vector3.right);
+            ID_out = 3;
         }
-        else if (Input.GetAxis("Horizontal") > 0)
+        else if (Input.GetAxis("Horizontal") > 0)  // right
         {
             CheckForNode(Vector3.right);
+            ID_out = 1;
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (Input.GetAxis("Vertical") < 0) //down
         {
             CheckForNode(-Vector3.forward);
+            ID_out = 2;
         }
-        else if (Input.GetAxis("Vertical") > 0)
+        else if (Input.GetAxis("Vertical") > 0) //up
         {
             CheckForNode(Vector3.forward);
+            ID_out = 0;
         }
     }
 

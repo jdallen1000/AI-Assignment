@@ -10,6 +10,7 @@ public class ButtonController : MonoBehaviour
     private Button button;
 
     private bool isRunning = false;
+    public int ID;
 
     void Start()
     {
@@ -49,6 +50,12 @@ public class ButtonController : MonoBehaviour
             this.GetComponent<Button>().interactable = true;
         }
 
+        if (playerScript.ID_out == ID) // allows the button to know what button to reference when changing the colour of the individual directions when there is a input that is not the mouse
+        {
+            buttonPress();
+            //Debug.Log(ID);
+            playerScript.ID_out = -1;
+        }
     }
 
     public void buttonPress()
@@ -58,4 +65,7 @@ public class ButtonController : MonoBehaviour
             StartCoroutine(ButtonColourChange());
         }
     }
+
+    //take in id of direction pressed off player script
+    //change colour of button
 }
