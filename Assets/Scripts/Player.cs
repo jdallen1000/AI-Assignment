@@ -37,12 +37,13 @@ public class Player : MonoBehaviour
             }
         }
         mask = LayerMask.GetMask("Ignore Raycast");
+        ID_out = -1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(moving);
+       // Debug.Log(moving);
 
         if (moving == false)
         {

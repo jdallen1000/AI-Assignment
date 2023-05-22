@@ -65,7 +65,4 @@ public class ButtonController : MonoBehaviour
             StartCoroutine(ButtonColourChange());
         }
     }
-
-    //take in id of direction pressed off player script
-    //change colour of button
 }
