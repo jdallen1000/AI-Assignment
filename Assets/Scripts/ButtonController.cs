@@ -21,7 +21,7 @@ public class ButtonController : MonoBehaviour
 
     IEnumerator ButtonColourChange()
     {
-        if (playerScript.directionNotFound && !playerScript.moving)
+        if (playerScript.directionNotFound && !playerScript.moving)  // detects if there is not a valid node in  that diretion and falshes the button red if there is not
         {
             isRunning = true;
             colour.selectedColor = Color.red;

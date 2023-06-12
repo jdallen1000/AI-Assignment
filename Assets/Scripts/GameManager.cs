@@ -50,4 +50,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
+            Debug.Log("Quiting");
+        }
+    }
 }
